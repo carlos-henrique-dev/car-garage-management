@@ -1,0 +1,43 @@
+version: '3.7'
+
+services:
+  backend:
+    container_name: backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/usr/app
+    expose:
+      - '3001'
+    ports:
+      - '3001:3001'
+    environment:
+      APP_ENV: dev
+      PORT: 3001
+    # links:
+    #   - sp_postgres:database
+    #   - sp_redis:redis
+    command: yarn dev
+    networks:
+      main:
+        aliases:
+          - backend
+  # postgres:
+  #   container_name: sp_postgres
+  #   image: postgres:11.1
+  #   volumes:
+  #     - ./.data/postgresql:/var/lib/postgresql/data
+  #   ports:
+  #     - '5432:5432'
+  #   environment:
+  #     POSTGRES_PASSWORD: postgres
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_DB: sp_test
+  #   networks:
+  #     main:
+  #       aliases:
+  #         - sp_postgres
+
+networks:
+  main:

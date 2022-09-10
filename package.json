@@ -1,0 +1,13 @@
+{
+	"name": "tangibly",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"install-deps": "concurrently \"yarn --cwd ./backend\" \"yarn --cwd ./frontend\"",
+		"start-dev": "concurrently \"docker-compose -f ./backend/docker-compose.yml up\" \"yarn --cwd ./frontend start\""
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC"
+}
