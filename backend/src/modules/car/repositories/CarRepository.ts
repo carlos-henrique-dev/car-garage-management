@@ -3,21 +3,25 @@ import { ICarRepository } from '../interfaces/ICarRepository'
 import { ICar } from '../interfaces'
 
 export class CarRepository implements ICarRepository {
+  private POPULATE_FIELDS = ['brand', 'costumer']
+
   async findOne(params: ICarRepository.FindOneParams): ICarRepository.FindOneResult {
     const { id: _id, registrationPlate } = params
 
-    return CarModel.findOne({ ...(_id && { _id }), ...(registrationPlate && { registrationPlate }) }).populate(['brand', 'costumer'])
+    const query = { ...(_id && { _id }), ...(registrationPlate && { registrationPlate }) }
+
+    return CarModel.findOne(query).populate(this.POPULATE_FIELDS)
   }
 
   async find(): ICarRepository.FindResult {
-    return CarModel.find({ deletedAt: null }).populate(['brand', 'costumer'])
+    return CarModel.find({ deletedAt: null }).populate(this.POPULATE_FIELDS)
   }
 
   save(data: ICar): ICarRepository.SaveResult {
-    return new Promise((resolve) => {
+    return new Promise(async (resolve) => {
       const Car = new CarModel(data)
 
-      Car.save()
+      await Car.save()
 
       resolve(Car)
     })
@@ -26,10 +30,11 @@ export class CarRepository implements ICarRepository {
   update(data: ICarRepository.UpdateParams): ICarRepository.UpdateResult {
     return new Promise((resolve) => {
       const { _id, ...rest } = data
+      console.log('rest', rest)
 
       return CarModel.findOneAndUpdate({ _id }, { $set: { ...rest } }, { new: true }, (_, doc) => {
         resolve(doc)
-      })
+      }).populate(this.POPULATE_FIELDS)
     })
   }
 

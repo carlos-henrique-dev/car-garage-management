@@ -19,8 +19,6 @@ export class CreateCarService implements ICreateCarService {
       throw new Error('A Car with this Registration Plate already exists')
     }
 
-    const Car = await this.CarRepository.save(data)
-
-    return Car
+    return this.CarRepository.save(data)
   }
 }

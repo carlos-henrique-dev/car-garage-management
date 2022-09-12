@@ -7,4 +7,4 @@ export const createBrand = (params: ICreateBrand) => API.post<IBrand>('/brand', 
 
 export const updateBrand = (params: IUpdateBrand) => API.put<IBrand>(`/brand/${params.id}`, params).then(({ data }) => data)
 
-export const disableBrand = (id: string) => API.delete<IBrand>(`/brand/${id}`)
+export const disableBrand = (id: string) => API.delete(`/brand/${id}`)

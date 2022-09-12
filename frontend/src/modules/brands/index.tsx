@@ -5,6 +5,8 @@ import { useFetchBrands, useManageBrands } from '../../hooks'
 import ManageBrand from './components/manage-brand'
 import { useBrandModalState } from './state/brand-modal-state'
 import { FormValues } from './types/form'
+import { ActionIcon } from '@mantine/core'
+import { IconCircleOff, IconEdit } from '@tabler/icons'
 
 function Brands() {
   const { brands, loading, updateList, clearDisabled } = useFetchBrands()
@@ -46,11 +48,13 @@ function Brands() {
             key: '',
             label: 'Actions',
             render: (value, record) => (
-              <Group>
-                <Button onClick={() => handleOpenOnEditMode(record)}>Edit </Button>
-                <Button onClick={() => handleDisableBrand(record)} color="red">
-                  Disable
-                </Button>
+              <Group position="right">
+                <ActionIcon onClick={() => handleOpenOnEditMode(record)}>
+                  <IconEdit color="#00abfb" />
+                </ActionIcon>
+                <ActionIcon onClick={() => handleDisableBrand(record)} color="red">
+                  <IconCircleOff />
+                </ActionIcon>
               </Group>
             ),
           },

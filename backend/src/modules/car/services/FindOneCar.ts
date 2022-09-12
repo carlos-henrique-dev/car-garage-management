@@ -13,8 +13,6 @@ export class FindOneCarService implements IFindOneCarService {
   }
 
   async execute(params: IFindOneCarService.Params): IFindOneCarService.Result {
-    const Car = await this.CarRepository.findOne(params)
-
-    return Car
+    return this.CarRepository.findOne(params)
   }
 }

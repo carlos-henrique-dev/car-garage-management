@@ -15,3 +15,35 @@ export interface IRepair {
   deletedAt?: Date
   description?: string
 }
+
+export interface ICreateRepair {
+  brand: string
+  costumer: string
+  car: string
+  carParts: string[]
+  employee: string
+  occurrenceDate: string
+  description?: string
+}
+
+export interface IUpdateRepair {
+  id: string
+  brand: string
+  costumer: string
+  car: string
+  carParts: string[]
+  employee: string
+  occurrenceDate: string
+  description?: string
+}
+
+export interface IRepairForm {
+  id?: string
+  brand: string
+  costumer: string
+  car: string
+  carParts: string[]
+  employee: string
+  occurrenceDate: string
+  description?: string
+}

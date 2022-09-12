@@ -9,8 +9,8 @@ export interface ICreateBrand {
 }
 
 export interface IUpdateBrand {
-  name: string
   id: string
+  name: string
 }
 
 export interface IBrandForm {

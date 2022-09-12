@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import { IUpdateCarDTO } from '../dtos'
 import { IUpdateCarService } from '../interfaces'
 import { injectable, inject } from 'tsyringe'
+import { IRequest } from '../../../shared/interfaces/request'
 
 @injectable()
 export class UpdateCarController {
@@ -14,14 +15,14 @@ export class UpdateCarController {
     this.updateCarService = updateCarService
   }
 
-  async handle(req: Request<{ id: string }, IUpdateCarDTO>, res: Response): Promise<Response> {
+  async handle(req: IRequest<IUpdateCarDTO>, res: Response): Promise<Response> {
     try {
       const { id } = req.params
-      const { name } = req.body
+      const { brand, costumer, model, registrationPlate } = req.body
 
-      const Car = await this.updateCarService.execute({ data: { name }, id })
+      const car = await this.updateCarService.execute({ data: { brand, costumer, model, registrationPlate }, id })
 
-      return res.status(201).json(Car)
+      return res.status(201).json(car)
     } catch (err: any) {
       return res.status(400).json({
         message: err.message || 'Unexpected Error.',

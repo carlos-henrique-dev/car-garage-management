@@ -9,3 +9,26 @@ export interface ICar {
   costumer: ICostumer
   deletedAt?: Date
 }
+
+export interface ICreateCar {
+  model: string
+  registrationPlate: string
+  brand: string
+  costumer: string
+}
+
+export interface IUpdateCar {
+  id: string
+  model: string
+  registrationPlate: string
+  brand: string
+  costumer: string
+}
+
+export interface ICarForm {
+  id?: string
+  model: string
+  registrationPlate: string
+  brand: string
+  costumer: string
+}

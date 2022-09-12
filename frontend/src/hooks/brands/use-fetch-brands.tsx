@@ -1,25 +1,20 @@
 import { useEffect, useState } from 'react'
 import { getBrands } from '../../data'
 import { IBrand } from '../../entities'
+import { updateOrInsert } from '../../utils/update-state'
 
 export const useFetchBrands = () => {
   const [brands, setBrands] = useState<IBrand[]>([])
   const [loading, setLoading] = useState(false)
 
-  const updateList = (brand?: IBrand) => {
-    if (brand) {
-      const newList = brands.reduce((accumulator, current) => {
-        if (current._id === brand._id) {
-          accumulator.push({ ...current, ...brand })
-          return accumulator
-        }
+  const updateList = (brand: IBrand) => {
+    const newList = updateOrInsert({
+      newElement: brand,
+      list: brands,
+      key: '_id',
+    })
 
-        accumulator.push(current)
-        return accumulator
-      }, [] as IBrand[])
-
-      setBrands(newList)
-    }
+    setBrands(newList)
   }
 
   const clearDisabled = (id: string) => {

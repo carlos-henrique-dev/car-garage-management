@@ -1,3 +1,6 @@
 export interface IUpdateCarDTO {
-  name?: string
+  model?: string
+  registrationPlate?: string
+  brand?: string
+  costumer?: string
 }
