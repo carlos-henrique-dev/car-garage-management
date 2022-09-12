@@ -3,7 +3,8 @@ import logger from 'morgan'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 
-import { costumerRoutes } from '../modules/costumer/routes'
+import { CostumerRoutes } from '../modules/costumer/routes'
+import { BrandRoutes } from '../modules/brand/routes'
 
 const app: Express = express()
 
@@ -15,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.get('/', (req: Request, res: Response) => res.send('Garage Management'))
 
-app.use(costumerRoutes)
+app.use(CostumerRoutes)
+app.use(BrandRoutes)
 
 export { app }

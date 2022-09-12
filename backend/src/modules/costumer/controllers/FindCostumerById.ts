@@ -16,7 +16,7 @@ export class FindCostumerByIdController {
 
   async handle(req: Request<IFindOneCostumerDTO>, res: Response): Promise<Response> {
     try {
-      const { id } = req.body
+      const { id } = req.params
 
       const costumer = await this.findCostumerService.execute({ id })
 

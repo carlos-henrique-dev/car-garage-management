@@ -15,4 +15,4 @@ router.put('/costumer/:id', (req: Request<{ id: string }, IUpdateCostumerDTO>, r
 
 router.delete('/costumer/:id', (req: Request<{ id: string }>, res) => container.resolve(DeleteCostumerController).handle(req, res))
 
-export { router as costumerRoutes }
+export { router as CostumerRoutes }
