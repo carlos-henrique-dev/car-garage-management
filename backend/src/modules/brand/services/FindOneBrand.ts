@@ -13,7 +13,6 @@ export class FindOneBrandService implements IFindOneBrandService {
   }
 
   async execute(params: IFindOneBrandService.Params): IFindOneBrandService.Result {
-    console.log(params)
     const Brand = await this.BrandRepository.findOne(params)
 
     return Brand

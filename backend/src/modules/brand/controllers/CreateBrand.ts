@@ -20,7 +20,7 @@ export class CreateBrandController {
 
       const brand = await this.createBrandService.execute({ name })
 
-      return res.status(201).json({ brand })
+      return res.status(201).json(brand)
     } catch (err: any) {
       return res.status(400).json({
         message: err.message || 'Unexpected Error.',

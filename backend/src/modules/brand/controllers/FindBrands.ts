@@ -15,9 +15,9 @@ export class FindBrandsController {
 
   async handle(req: Request, res: Response): Promise<Response> {
     try {
-      const Brand = await this.findBrandsService.execute()
+      const brands = await this.findBrandsService.execute()
 
-      return res.status(200).json({ Brand })
+      return res.status(200).json(brands)
     } catch (err: any) {
       console.error(err)
       return res.status(400).json({

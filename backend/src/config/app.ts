@@ -5,6 +5,7 @@ import bodyParser from 'body-parser'
 
 import { CostumerRoutes } from '../modules/costumer/routes'
 import { BrandRoutes } from '../modules/brand/routes'
+import { CarPartRoutes } from '../modules/car-part/routes'
 
 const app: Express = express()
 
@@ -18,5 +19,6 @@ app.get('/', (req: Request, res: Response) => res.send('Garage Management'))
 
 app.use(CostumerRoutes)
 app.use(BrandRoutes)
+app.use(CarPartRoutes)
 
 export { app }

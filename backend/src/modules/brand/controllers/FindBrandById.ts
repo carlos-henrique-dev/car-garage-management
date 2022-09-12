@@ -20,7 +20,7 @@ export class FindBrandByIdController {
 
       const brand = await this.findBrandService.execute({ id })
 
-      return res.status(201).json({ brand })
+      return res.status(201).json(brand)
     } catch (err: any) {
       return res.status(400).json({
         message: err.message || 'Unexpected Error.',

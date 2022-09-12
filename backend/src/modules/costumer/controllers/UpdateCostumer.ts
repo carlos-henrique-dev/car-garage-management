@@ -21,7 +21,7 @@ export class UpdateCostumerController {
 
       const costumer = await this.updateCostumerService.execute({ data: { name, email }, id })
 
-      return res.status(201).json({ costumer })
+      return res.status(201).json(costumer)
     } catch (err: any) {
       return res.status(400).json({
         message: err.message || 'Unexpected Error.',

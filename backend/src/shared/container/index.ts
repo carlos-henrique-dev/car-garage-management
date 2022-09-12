@@ -8,6 +8,10 @@ import { IBrandRepository, ICreateBrandService, IUpdateBrandService, IFindOneBra
 import { BrandRepository } from '../../modules/brand/repositories'
 import { CreateBrandService, UpdateBrandService, FindOneBrandService, FindBrandsService, DeleteBrandService } from '../../modules/brand/services'
 
+import { ICarPartRepository, ICreateCarPartService, IUpdateCarPartService, IFindOneCarPartService, IFindCarPartsService, IDeleteCarPartService } from '../../modules/car-part/interfaces'
+import { CarPartRepository } from '../../modules/car-part/repositories'
+import { CreateCarPartService, UpdateCarPartService, FindOneCarPartService, FindCarPartsService, DeleteCarPartService } from '../../modules/car-part/services'
+
 // Costumer Dependency Injection
 container.register<ICostumerRepository>('CostumerRepository', CostumerRepository)
 container.register<ICreateCostumerService>('CreateCostumerService', CreateCostumerService)
@@ -23,3 +27,11 @@ container.register<IUpdateBrandService>('UpdateBrandService', UpdateBrandService
 container.register<IFindOneBrandService>('FindOneBrandService', FindOneBrandService)
 container.register<IFindBrandsService>('FindBrandService', FindBrandsService)
 container.register<IDeleteBrandService>('DeleteBrandService', DeleteBrandService)
+
+// Car Part Dependency Injection
+container.register<ICarPartRepository>('CarPartRepository', CarPartRepository)
+container.register<ICreateCarPartService>('CreateCarPartService', CreateCarPartService)
+container.register<IUpdateCarPartService>('UpdateCarPartService', UpdateCarPartService)
+container.register<IFindOneCarPartService>('FindOneCarPartService', FindOneCarPartService)
+container.register<IFindCarPartsService>('FindCarPartService', FindCarPartsService)
+container.register<IDeleteCarPartService>('DeleteCarPartService', DeleteCarPartService)

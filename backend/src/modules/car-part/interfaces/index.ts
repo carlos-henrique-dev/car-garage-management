@@ -1,0 +1,7 @@
+export * from './ICarPartRepository'
+export * from './ICreateCarPartService'
+export * from './ICarPart'
+export * from './IFindOneCarPartService'
+export * from './IFindCarPartService'
+export * from './IUpdateCarPartService'
+export * from './IDeleteCarPartService'

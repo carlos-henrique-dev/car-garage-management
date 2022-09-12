@@ -17,7 +17,7 @@ export class FindCostumersController {
     try {
       const costumer = await this.findCostumersService.execute()
 
-      return res.status(200).json({ costumer })
+      return res.status(200).json(costumer)
     } catch (err: any) {
       console.error(err)
       return res.status(400).json({
