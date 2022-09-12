@@ -12,7 +12,7 @@ import { FormValues } from './types/form'
 function Products() {
   const { products, loading, updateList, clearDisabled } = useFetchProducts()
 
-  const { save: saveCar, loading: savingProduct, disable: disableProduct } = useManageProducts()
+  const { save: saveProduct, loading: savingProduct, disable: disableProduct } = useManageProducts()
 
   const { openModal, closeModal, setCurrentProduct } = useProductModalState()
 
@@ -23,7 +23,7 @@ function Products() {
   }
 
   const handleSaveProduct = async (values: FormValues) => {
-    const result = await saveCar(values)
+    const result = await saveProduct(values)
     updateList(result)
     closeModal()
   }
