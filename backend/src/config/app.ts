@@ -8,6 +8,7 @@ import { BrandRoutes } from '../modules/brand/routes'
 import { CarPartRoutes } from '../modules/car-part/routes'
 import { EmployeeRoutes } from '../modules/employee/routes'
 import { CarRoutes } from '../modules/car/routes'
+import { RepairRoutes } from '../modules/repair/routes'
 
 const app: Express = express()
 
@@ -24,5 +25,6 @@ app.use(BrandRoutes)
 app.use(CarPartRoutes)
 app.use(EmployeeRoutes)
 app.use(CarRoutes)
+app.use(RepairRoutes)
 
 export { app }

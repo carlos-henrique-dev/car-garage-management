@@ -20,6 +20,10 @@ import { ICarRepository, ICreateCarService, IUpdateCarService, IFindOneCarServic
 import { CarRepository } from '../../modules/car/repositories'
 import { CreateCarService, UpdateCarService, FindOneCarService, FindCarsService, DeleteCarService } from '../../modules/car/services'
 
+import { ICreateRepairService, IUpdateRepairService, IFindOneRepairService, IFindRepairsService, IDeleteRepairService, IRepairRepository } from '../../modules/repair/interfaces'
+import { RepairRepository } from '../../modules/repair/repositories'
+import { CreateRepairService, UpdateRepairService, FindOneRepairService, FindRepairsService, DeleteRepairService } from '../../modules/repair/services'
+
 // Costumer Dependency Injection
 container.register<ICostumerRepository>('CostumerRepository', CostumerRepository)
 container.register<ICreateCostumerService>('CreateCostumerService', CreateCostumerService)
@@ -59,3 +63,11 @@ container.register<IUpdateCarService>('UpdateCarService', UpdateCarService)
 container.register<IFindOneCarService>('FindOneCarService', FindOneCarService)
 container.register<IFindCarsService>('FindCarService', FindCarsService)
 container.register<IDeleteCarService>('DeleteCarService', DeleteCarService)
+
+// Repair Dependency Injection
+container.register<IRepairRepository>('RepairRepository', RepairRepository)
+container.register<ICreateRepairService>('CreateRepairService', CreateRepairService)
+container.register<IUpdateRepairService>('UpdateRepairService', UpdateRepairService)
+container.register<IFindOneRepairService>('FindOneRepairService', FindOneRepairService)
+container.register<IFindRepairsService>('FindRepairService', FindRepairsService)
+container.register<IDeleteRepairService>('DeleteRepairService', DeleteRepairService)
