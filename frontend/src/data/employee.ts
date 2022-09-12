@@ -7,4 +7,4 @@ export const createEmployee = (params: ICreateEmployee) => API.post<IEmployee>('
 
 export const updateEmployee = (params: IUpdateEmployee) => API.put<IEmployee>(`/employee/${params.id}`, params).then(({ data }) => data)
 
-export const disableEmployee = (id: string) => API.delete(`/brand/${id}`)
+export const disableEmployee = (id: string) => API.delete(`/employee/${id}`)
