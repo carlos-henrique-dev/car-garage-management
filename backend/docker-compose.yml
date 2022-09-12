@@ -15,29 +15,31 @@ services:
     environment:
       APP_ENV: dev
       PORT: 3001
-    # links:
-    #   - sp_postgres:database
-    #   - sp_redis:redis
+    links:
+      - garage_database:database
+    depends_on:
+      - garage_database
     command: yarn dev
     networks:
       main:
         aliases:
           - backend
-  # postgres:
-  #   container_name: sp_postgres
-  #   image: postgres:11.1
-  #   volumes:
-  #     - ./.data/postgresql:/var/lib/postgresql/data
-  #   ports:
-  #     - '5432:5432'
-  #   environment:
-  #     POSTGRES_PASSWORD: postgres
-  #     POSTGRES_USER: postgres
-  #     POSTGRES_DB: sp_test
-  #   networks:
-  #     main:
-  #       aliases:
-  #         - sp_postgres
+
+  garage_database:
+    container_name: garage_database
+    image: mongo:5.0
+    ports:
+      - 27017:27017
+    volumes:
+      - ./.data/mongo:/var/lib/mongo/data
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=S3cret
+      - MONGO_INITDB_DATABASE=garage-db
+    networks:
+      main:
+        aliases:
+          - garage_database
 
 networks:
   main:

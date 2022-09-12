@@ -1,15 +1,38 @@
+import 'reflect-metadata'
+
 import * as dotenv from 'dotenv'
 dotenv.config()
 
-import express, { Express, Request, Response } from 'express'
+import mongoose from 'mongoose'
+import './shared/container'
+import { app } from './config/app'
 
-const app: Express = express()
-const port = process.env.PORT
+const startServer = () => {
+  try {
+    const port = process.env.PORT || 3000
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Express + TypeScript Server')
-})
+    mongoose.connect(
+      'mongodb://admin:S3cret@garage_database:27017/garage-db',
+      {
+        ssl: false,
+        directConnection: true,
+        authSource: 'admin',
+        readPreference: 'primary',
+      },
+      (err) => {
+        if (mongoose.connection.readyState === 1) console.log('🏦 Connected to the database!')
 
-app.listen(port, () => {
-  console.log(`⚡️[server]: Server is running at https://localhost:${port}`)
-})
+        if (err) console.error('🚫 Mongo Connection error', err)
+      }
+    )
+
+    app.listen(port, () => {
+      console.log(`⚡️[server]: Server is running at https://localhost:${port}`)
+    })
+  } catch (error) {
+    console.error(error)
+    process.exit(1)
+  }
+}
+
+startServer()

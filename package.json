@@ -1,13 +1,8 @@
 {
-	"name": "tangibly",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
+	"name": "starter",
+	"description": "scripts to start project",
 	"scripts": {
 		"install-deps": "concurrently \"yarn --cwd ./backend\" \"yarn --cwd ./frontend\"",
-		"start-dev": "concurrently \"docker-compose -f ./backend/docker-compose.yml up\" \"yarn --cwd ./frontend start\""
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC"
+		"start-dev": "concurrently \"docker-compose -f ./backend/docker-compose.yml -p='garage-management' up\" \"yarn --cwd ./frontend start\""
+	}
 }
