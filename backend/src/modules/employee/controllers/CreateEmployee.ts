@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import { ICreateEmployeeDTO } from '../dtos'
 import { ICreateEmployeeService } from '../interfaces'
 import { injectable, inject } from 'tsyringe'
+import { IRequest } from '../../../shared/interfaces/request'
 
 @injectable()
 export class CreateEmployeeController {
@@ -14,7 +15,7 @@ export class CreateEmployeeController {
     this.createEmployeeService = createEmployeeService
   }
 
-  async handle(req: Request<ICreateEmployeeDTO>, res: Response): Promise<Response> {
+  async handle(req: IRequest<ICreateEmployeeDTO>, res: Response): Promise<Response> {
     try {
       const { name, email, hiringDate = new Date() } = req.body
 

@@ -10,7 +10,7 @@ export class CarPartRepository implements ICarPartRepository {
   }
 
   async find(): ICarPartRepository.FindResult {
-    return CarPartModel.find()
+    return CarPartModel.find({ deletedAt: null })
   }
 
   save(data: ICarPart): ICarPartRepository.SaveResult {

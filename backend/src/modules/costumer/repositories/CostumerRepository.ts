@@ -10,7 +10,7 @@ export class CostumerRepository implements ICostumerRepository {
   }
 
   async find(): ICostumerRepository.FindResult {
-    return CostumerModel.find()
+    return CostumerModel.find({ deletedAt: null })
   }
 
   save(data: ICostumer): ICostumerRepository.SaveResult {

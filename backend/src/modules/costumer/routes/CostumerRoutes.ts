@@ -2,10 +2,11 @@ import { Request, Router } from 'express'
 import { CreateCostumerController, DeleteCostumerController, FindCostumerByIdController, FindCostumersController, UpdateCostumerController } from '../controllers'
 import { ICreateCostumerDTO, IFindOneCostumerDTO, IUpdateCostumerDTO } from '../dtos'
 import { container } from 'tsyringe'
+import { IRequest } from '../../../shared/interfaces/request'
 
 const router = Router()
 
-router.post('/costumer', (req: Request<ICreateCostumerDTO>, res) => container.resolve(CreateCostumerController).handle(req, res))
+router.post('/costumer', (req: IRequest<ICreateCostumerDTO>, res) => container.resolve(CreateCostumerController).handle(req, res))
 
 router.get('/costumer', (req: Request, res) => container.resolve(FindCostumersController).handle(req, res))
 

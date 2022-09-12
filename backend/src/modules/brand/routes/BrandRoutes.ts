@@ -2,10 +2,11 @@ import { Request, Router } from 'express'
 import { CreateBrandController, DeleteBrandController, FindBrandByIdController, FindBrandsController, UpdateBrandController } from '../controllers'
 import { ICreateBrandDTO, IFindOneBrandDTO, IUpdateBrandDTO } from '../dtos'
 import { container } from 'tsyringe'
+import { IRequest } from '../../../shared/interfaces/request'
 
 const router = Router()
 
-router.post('/brand', (req: Request<ICreateBrandDTO>, res) => container.resolve(CreateBrandController).handle(req, res))
+router.post('/brand', (req: IRequest<ICreateBrandDTO>, res) => container.resolve(CreateBrandController).handle(req, res))
 
 router.get('/brand', (req: Request, res) => container.resolve(FindBrandsController).handle(req, res))
 

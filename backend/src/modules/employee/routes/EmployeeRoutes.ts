@@ -2,10 +2,11 @@ import { Request, Router } from 'express'
 import { CreateEmployeeController, DeleteEmployeeController, FindEmployeeByIdController, FindEmployeesController, UpdateEmployeeController } from '../controllers'
 import { ICreateEmployeeDTO, IFindOneEmployeeDTO, IUpdateEmployeeDTO } from '../dtos'
 import { container } from 'tsyringe'
+import { IRequest } from '../../../shared/interfaces/request'
 
 const router = Router()
 
-router.post('/employee', (req: Request<ICreateEmployeeDTO>, res) => container.resolve(CreateEmployeeController).handle(req, res))
+router.post('/employee', (req: IRequest<ICreateEmployeeDTO>, res) => container.resolve(CreateEmployeeController).handle(req, res))
 
 router.get('/employee', (req: Request, res) => container.resolve(FindEmployeesController).handle(req, res))
 

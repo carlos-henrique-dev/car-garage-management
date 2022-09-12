@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import { ICreateBrandDTO } from '../dtos'
 import { ICreateBrandService } from '../interfaces'
 import { injectable, inject } from 'tsyringe'
+import { IRequest } from '../../../shared/interfaces/request'
 
 @injectable()
 export class CreateBrandController {
@@ -14,7 +15,7 @@ export class CreateBrandController {
     this.createBrandService = createBrandService
   }
 
-  async handle(req: Request<ICreateBrandDTO>, res: Response): Promise<Response> {
+  async handle(req: IRequest<ICreateBrandDTO>, res: Response): Promise<Response> {
     try {
       const { name } = req.body
 

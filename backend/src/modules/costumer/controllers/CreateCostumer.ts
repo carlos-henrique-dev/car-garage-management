@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import { ICreateCostumerDTO } from '../dtos'
 import { ICreateCostumerService } from '../interfaces'
 import { injectable, inject } from 'tsyringe'
+import { IRequest } from '../../../shared/interfaces/request'
 
 @injectable()
 export class CreateCostumerController {
@@ -14,7 +15,7 @@ export class CreateCostumerController {
     this.createCostumerService = createCostumerService
   }
 
-  async handle(req: Request<ICreateCostumerDTO>, res: Response): Promise<Response> {
+  async handle(req: IRequest<ICreateCostumerDTO>, res: Response): Promise<Response> {
     try {
       const { name, email } = req.body
 

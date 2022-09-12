@@ -10,7 +10,7 @@ export class EmployeeRepository implements IEmployeeRepository {
   }
 
   async find(): IEmployeeRepository.FindResult {
-    return EmployeeModel.find()
+    return EmployeeModel.find({ deletedAt: null })
   }
 
   save(data: IEmployee): IEmployeeRepository.SaveResult {

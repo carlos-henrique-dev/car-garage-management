@@ -10,7 +10,7 @@ export class BrandRepository implements IBrandRepository {
   }
 
   async find(): IBrandRepository.FindResult {
-    return BrandModel.find()
+    return BrandModel.find({ deletedAt: null })
   }
 
   save(data: IBrand): IBrandRepository.SaveResult {

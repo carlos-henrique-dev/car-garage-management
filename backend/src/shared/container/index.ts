@@ -16,6 +16,10 @@ import { IEmployeeRepository, ICreateEmployeeService, IUpdateEmployeeService, IF
 import { EmployeeRepository } from '../../modules/employee/repositories'
 import { CreateEmployeeService, UpdateEmployeeService, FindOneEmployeeService, FindEmployeesService, DeleteEmployeeService } from '../../modules/employee/services'
 
+import { ICarRepository, ICreateCarService, IUpdateCarService, IFindOneCarService, IFindCarsService, IDeleteCarService } from '../../modules/car/interfaces'
+import { CarRepository } from '../../modules/car/repositories'
+import { CreateCarService, UpdateCarService, FindOneCarService, FindCarsService, DeleteCarService } from '../../modules/car/services'
+
 // Costumer Dependency Injection
 container.register<ICostumerRepository>('CostumerRepository', CostumerRepository)
 container.register<ICreateCostumerService>('CreateCostumerService', CreateCostumerService)
@@ -47,3 +51,11 @@ container.register<IUpdateEmployeeService>('UpdateEmployeeService', UpdateEmploy
 container.register<IFindOneEmployeeService>('FindOneEmployeeService', FindOneEmployeeService)
 container.register<IFindEmployeesService>('FindEmployeeService', FindEmployeesService)
 container.register<IDeleteEmployeeService>('DeleteEmployeeService', DeleteEmployeeService)
+
+// Car Dependency Injection
+container.register<ICarRepository>('CarRepository', CarRepository)
+container.register<ICreateCarService>('CreateCarService', CreateCarService)
+container.register<IUpdateCarService>('UpdateCarService', UpdateCarService)
+container.register<IFindOneCarService>('FindOneCarService', FindOneCarService)
+container.register<IFindCarsService>('FindCarService', FindCarsService)
+container.register<IDeleteCarService>('DeleteCarService', DeleteCarService)

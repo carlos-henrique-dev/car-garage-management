@@ -2,10 +2,11 @@ import { Request, Router } from 'express'
 import { CreateCarPartController, DeleteCarPartController, FindCarPartByIdController, FindCarPartsController, UpdateCarPartController } from '../controllers'
 import { ICreateCarPartDTO, IFindOneCarPartDTO, IUpdateCarPartDTO } from '../dtos'
 import { container } from 'tsyringe'
+import { IRequest } from '../../../shared/interfaces/request'
 
 const router = Router()
 
-router.post('/car-part', (req: Request<ICreateCarPartDTO>, res) => container.resolve(CreateCarPartController).handle(req, res))
+router.post('/car-part', (req: IRequest<ICreateCarPartDTO>, res) => container.resolve(CreateCarPartController).handle(req, res))
 
 router.get('/car-part', (req: Request, res) => container.resolve(FindCarPartsController).handle(req, res))
 
