@@ -19,9 +19,9 @@ export class UpdateRepairController {
       const { id } = req.params
       const { car, brand, costumer, carParts, employee, occurrenceDate, description } = req.body
 
-      const Repair = await this.updateRepairService.execute({ data: { car, brand, costumer, carParts, employee, occurrenceDate, description }, id })
+      const repair = await this.updateRepairService.execute({ data: { car, brand, costumer, carParts, employee, occurrenceDate, description }, id })
 
-      return res.status(201).json({ Repair })
+      return res.status(201).json(repair)
     } catch (err: any) {
       return res.status(400).json({
         message: err.message || 'Unexpected Error.',

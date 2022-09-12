@@ -1,0 +1,7 @@
+export interface IEmployee {
+  _id: string
+  name: string
+  email: string
+  hiringDate: Date
+  deletedAt?: Date
+}

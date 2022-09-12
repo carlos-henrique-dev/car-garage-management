@@ -3,7 +3,7 @@ import { IRepairRepository } from '../interfaces/IRepairRepository'
 import { IRepair } from '../interfaces'
 
 export class RepairRepository implements IRepairRepository {
-  private populateFields = ['brand', 'costumer', 'car', 'carParts', 'employee']
+  private populateFields = ['costumer', { path: 'car', populate: { path: 'brand', model: 'Brand' } }, 'carParts', 'employee']
 
   async findOne(params: IRepairRepository.FindOneParams): IRepairRepository.FindOneResult {
     const { id: _id, registrationPlate } = params

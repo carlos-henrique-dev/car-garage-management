@@ -8,4 +8,5 @@ export interface ICreateRepairDTO {
   employee: string
   occurrenceDate: Date
   description?: string
+  total: number
 }

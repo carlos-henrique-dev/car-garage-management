@@ -21,7 +21,7 @@ export class UpdateCarController {
 
       const Car = await this.updateCarService.execute({ data: { name }, id })
 
-      return res.status(201).json({ Car })
+      return res.status(201).json(Car)
     } catch (err: any) {
       return res.status(400).json({
         message: err.message || 'Unexpected Error.',

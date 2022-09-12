@@ -12,11 +12,6 @@ const RepairSchema = new Schema<IRepair>({
     ref: 'CarPart',
     required: true,
   },
-  brand: {
-    type: Schema.Types.ObjectId,
-    ref: 'Brand',
-    required: true,
-  },
   employee: {
     type: Schema.Types.ObjectId,
     ref: 'Employee',
@@ -33,6 +28,10 @@ const RepairSchema = new Schema<IRepair>({
   },
   description: {
     type: String,
+  },
+  total: {
+    type: Number,
+    default: 0,
   },
   deletedAt: {
     type: Date,

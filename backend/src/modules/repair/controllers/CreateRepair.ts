@@ -24,7 +24,7 @@ export class CreateRepairController {
     try {
       const { car, brand, costumer, carParts, employee, occurrenceDate = new Date(), description } = req.body
 
-      const createdRepair = await this.createRepairService.execute({ car, brand, costumer, carParts, employee, occurrenceDate, description })
+      const createdRepair = await this.createRepairService.execute({ car, brand, costumer, carParts, employee, occurrenceDate, description, total: 0 })
 
       const repair = await this.findOneRepairService.execute({ id: createdRepair?._id })
 

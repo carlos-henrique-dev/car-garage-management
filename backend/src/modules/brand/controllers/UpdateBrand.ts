@@ -19,9 +19,9 @@ export class UpdateBrandController {
       const { id } = req.params
       const { name } = req.body
 
-      const Brand = await this.updateBrandService.execute({ data: { name }, id })
+      const brand = await this.updateBrandService.execute({ data: { name }, id })
 
-      return res.status(201).json({ Brand })
+      return res.status(201).json(brand)
     } catch (err: any) {
       return res.status(400).json({
         message: err.message || 'Unexpected Error.',

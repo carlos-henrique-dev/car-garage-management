@@ -2,7 +2,6 @@ import { Schema } from 'mongoose'
 
 export interface IRepair {
   _id?: string
-  brand: string | Schema.Types.ObjectId
   costumer: string | Schema.Types.ObjectId
   car: string | Schema.Types.ObjectId
   carParts: string | Schema.Types.ObjectId[]
@@ -10,4 +9,5 @@ export interface IRepair {
   occurrenceDate: string | Date
   deletedAt?: Date
   description?: string
+  total: number
 }
