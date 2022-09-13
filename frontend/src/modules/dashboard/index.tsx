@@ -1,7 +1,13 @@
-import React from 'react'
+import { Container } from '@mantine/core'
+import { LineChart } from './components/LineChart'
+import { data } from './data'
 
-function index() {
-  return <div>Dashboard</div>
+function Dashboard() {
+  return (
+    <Container style={{ height: 400 }}>
+      <LineChart data={data} />
+    </Container>
+  )
 }
 
-export default index
+export default Dashboard
