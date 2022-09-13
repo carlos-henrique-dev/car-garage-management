@@ -1,4 +1,3 @@
-import { IBrand } from './brand'
 import { ICar } from './car'
 import { ICostumer } from './costumer'
 import { IEmployee } from './employee'
@@ -6,7 +5,6 @@ import { IProduct } from './product'
 
 export interface IRepair {
   _id: string
-  brand: IBrand
   costumer: ICostumer
   car: ICar
   carParts: IProduct[]
@@ -14,36 +12,34 @@ export interface IRepair {
   occurrenceDate: string | Date
   deletedAt?: Date
   description?: string
+  total: number
 }
 
 export interface ICreateRepair {
-  brand: string
   costumer: string
   car: string
   carParts: string[]
   employee: string
-  occurrenceDate: string
+  occurrenceDate: Date
   description?: string
 }
 
 export interface IUpdateRepair {
   id: string
-  brand: string
   costumer: string
   car: string
   carParts: string[]
   employee: string
-  occurrenceDate: string
+  occurrenceDate: Date
   description?: string
 }
 
 export interface IRepairForm {
   id?: string
-  brand: string
   costumer: string
   car: string
   carParts: string[]
   employee: string
-  occurrenceDate: string
+  occurrenceDate: Date
   description?: string
 }

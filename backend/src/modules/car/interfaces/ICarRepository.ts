@@ -2,7 +2,7 @@ import { ICar } from './ICar'
 
 export interface ICarRepository {
   findOne(params: ICarRepository.FindOneParams): ICarRepository.FindOneResult
-  find(): ICarRepository.FindResult
+  find(params?: ICarRepository.FindParams): ICarRepository.FindResult
   save(Car: ICar): ICarRepository.SaveResult
   update(Car: ICarRepository.UpdateParams): ICarRepository.UpdateResult
   delete(id: string): ICarRepository.DeleteResult
@@ -12,6 +12,7 @@ export namespace ICarRepository {
   export type FindOneParams = { id?: string; registrationPlate?: string }
   export type FindOneResult = Promise<ICar | null>
 
+  export type FindParams = Partial<ICar>
   export type FindResult = Promise<ICar[]>
 
   export type SaveResult = Promise<ICar | null>

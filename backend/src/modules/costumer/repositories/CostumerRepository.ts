@@ -14,10 +14,10 @@ export class CostumerRepository implements ICostumerRepository {
   }
 
   save(data: ICostumer): ICostumerRepository.SaveResult {
-    return new Promise((resolve) => {
+    return new Promise(async (resolve) => {
       const costumer = new CostumerModel(data)
 
-      costumer.save()
+      await costumer.save()
 
       resolve(costumer)
     })

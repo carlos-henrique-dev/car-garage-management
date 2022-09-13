@@ -13,8 +13,8 @@ export class CarRepository implements ICarRepository {
     return CarModel.findOne(query).populate(this.POPULATE_FIELDS)
   }
 
-  async find(): ICarRepository.FindResult {
-    return CarModel.find({ deletedAt: null }).populate(this.POPULATE_FIELDS)
+  async find(params: ICarRepository.FindParams): ICarRepository.FindResult {
+    return CarModel.find({ deletedAt: null, ...params }).populate(this.POPULATE_FIELDS)
   }
 
   save(data: ICar): ICarRepository.SaveResult {

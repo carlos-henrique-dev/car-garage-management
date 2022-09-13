@@ -2,7 +2,7 @@ import { useForm } from '@mantine/form'
 import { Modal, Button, Group, Box, TextInput, Select } from '@mantine/core'
 import { useCarModalState } from '../state/car-modal-state'
 import { FormValues } from '../types/form'
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { IBrand, ICostumer } from '../../../entities'
 
 type Props = {
@@ -45,21 +45,15 @@ function ManageCar({ loading, onSave, brands, costumers }: Props) {
     form.reset()
   }
 
+  const brandOptions = useMemo(() => brands.map(({ _id, name }) => ({ value: _id, label: name })), [brands])
+
   return (
     <Modal opened={opened} onClose={handleClose} title={`${mode === 'create' ? 'Create a new' : 'Edit'} Car`} centered>
       <Box mx="auto">
         <form onSubmit={form.onSubmit((values) => handleSave(values))}>
           <TextInput withAsterisk label="Model" placeholder="Some Car model" {...form.getInputProps('model')} />
 
-          <Select
-            withAsterisk
-            label="The Brand of the vehicle"
-            placeholder="Select the brand"
-            {...form.getInputProps('brand')}
-            searchable
-            nothingFound="No options"
-            data={brands.map(({ _id, name }) => ({ value: _id, label: name }))}
-          />
+          <Select withAsterisk label="The Brand of the vehicle" placeholder="Select the brand" {...form.getInputProps('brand')} searchable nothingFound="No options" data={brandOptions} />
 
           <TextInput withAsterisk label="Registration Plate" placeholder="abc123" {...form.getInputProps('registrationPlate')} />
 

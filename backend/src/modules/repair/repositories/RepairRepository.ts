@@ -16,10 +16,10 @@ export class RepairRepository implements IRepairRepository {
   }
 
   save(data: IRepair): IRepairRepository.SaveResult {
-    return new Promise((resolve) => {
+    return new Promise(async (resolve) => {
       const Repair = new RepairModel(data)
 
-      Repair.save()
+      await Repair.save()
 
       resolve(Repair)
     })

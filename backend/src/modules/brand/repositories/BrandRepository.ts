@@ -14,10 +14,10 @@ export class BrandRepository implements IBrandRepository {
   }
 
   save(data: IBrand): IBrandRepository.SaveResult {
-    return new Promise((resolve) => {
+    return new Promise(async (resolve) => {
       const Brand = new BrandModel(data)
 
-      Brand.save()
+      await Brand.save()
 
       resolve(Brand)
     })

@@ -8,3 +8,5 @@ export const createCar = (params: ICreateCar) => API.post<ICar>('/car', params).
 export const updateCar = (params: IUpdateCar) => API.put<ICar>(`/car/${params.id}`, params).then(({ data }) => data)
 
 export const disableCar = (id: string) => API.delete(`/car/${id}`)
+
+export const getCostumerCars = (costumerId: string) => API.get<ICar[]>(`/costumer-car/${costumerId}`).then(({ data }) => data)

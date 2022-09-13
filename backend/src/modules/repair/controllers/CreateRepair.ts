@@ -13,7 +13,7 @@ export class CreateRepairController {
     @inject('CreateRepairService')
     createRepairService: ICreateRepairService,
 
-    @inject('FindRepairService')
+    @inject('FindOneRepairService')
     findOneRepairService: IFindOneRepairService
   ) {
     this.createRepairService = createRepairService
@@ -22,9 +22,9 @@ export class CreateRepairController {
 
   async handle(req: IRequest<ICreateRepairDTO>, res: Response): Promise<Response> {
     try {
-      const { car, brand, costumer, carParts, employee, occurrenceDate = new Date(), description } = req.body
+      const { car, brand, costumer, carParts, employee, occurrenceDate = new Date(), description, total } = req.body
 
-      const createdRepair = await this.createRepairService.execute({ car, brand, costumer, carParts, employee, occurrenceDate, description, total: 0 })
+      const createdRepair = await this.createRepairService.execute({ car, brand, costumer, carParts, employee, occurrenceDate, description, total })
 
       const repair = await this.findOneRepairService.execute({ id: createdRepair?._id })
 

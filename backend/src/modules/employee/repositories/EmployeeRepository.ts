@@ -14,10 +14,10 @@ export class EmployeeRepository implements IEmployeeRepository {
   }
 
   save(data: IEmployee): IEmployeeRepository.SaveResult {
-    return new Promise((resolve) => {
+    return new Promise(async (resolve) => {
       const Employee = new EmployeeModel(data)
 
-      Employee.save()
+      await Employee.save()
 
       resolve(Employee)
     })

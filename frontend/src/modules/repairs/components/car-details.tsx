@@ -9,5 +9,5 @@ export function CarDetails({ car }: Props) {
 
   const { model, brand, registrationPlate } = car
 
-  return <span>{`${model}/${brand.name} - ${registrationPlate}`}</span>
+  return <span>{`${model}/${brand?.name} - ${registrationPlate}`}</span>
 }

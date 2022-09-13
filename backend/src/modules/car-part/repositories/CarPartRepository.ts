@@ -14,10 +14,10 @@ export class CarPartRepository implements ICarPartRepository {
   }
 
   save(data: ICarPart): ICarPartRepository.SaveResult {
-    return new Promise((resolve) => {
+    return new Promise(async (resolve) => {
       const CarPart = new CarPartModel(data)
 
-      CarPart.save()
+      await CarPart.save()
 
       resolve(CarPart)
     })
